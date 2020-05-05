@@ -1,0 +1,54 @@
+url: "https://lfk.im"
+
+# process the _data folder
+collections:
+  components:
+    output: false
+  cuisines:
+    output: true
+    permalink: /:collection/:name/
+  neighborhoods:
+    output: true
+    permalink: /:collection/:name/
+  places:
+    output: true
+    permalink: /:collection/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "cuisines"
+    values:
+      layout: "cuisine"
+  - scope:
+      path: ""
+      type: "places"
+    values:
+      layout: "place"
+  - scope:
+      path: ""
+      type: "neighborhoods"
+    values:
+      layout: "neighborhood"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+exclude:
+  - "*.conf"
+  - "*.json"
+  - "*.lock"
+  - "*.py"
+  - "*.toml"
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+include:
+  - _pages

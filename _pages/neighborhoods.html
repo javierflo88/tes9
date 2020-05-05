@@ -1,0 +1,27 @@
+---
+layout: default
+permalink: /neighborhoods/
+---
+
+<div class="lg:flex lg:items-center lg:justify-between">
+  <div class="flex-1 min-w-0 px-3 py-3">
+    <h1 class="text-3xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+      <a href="{% link _pages/neighborhoods.html %}">Neighborhoods</a>
+    </h1>
+  </div>
+</div>
+
+<div class="w-full mx-auto">
+  <ul class="p-4">
+    {% for neighborhood in site.neighborhoods %}
+      {% if neighborhood.active == true %}
+        {% assign places = site.places | where:"neighborhood_slug", neighborhood.slug | where:"active", true  %}
+        {% if places.size > 0 %}
+          <li>
+            <a class="text-blue-700 underline hover:text-blue-500" href="{{ neighborhood.url }}">{{ neighborhood.name }} ({{ places.size }})</a>
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
